@@ -1,0 +1,70 @@
+<div class="vh-100 main">
+  <div class="container h-100">
+    <div class="row align-items-center h-100 mx-5">
+      <div class=" py-4 px-lg-5 child">
+        <div class="col-lg-7 px-lg-4">
+          <h3 class="text-center mt-3">REGISTRATION FORM</h3>
+          <div class="alert alert-danger text-center" *ngIf="error">
+            {{error}}
+          </div>
+          <div class="alert alert-success text-center" *ngIf="correct">
+            {{correct}}
+          </div>
+          <form class="mt-4 text-muted" [formGroup]="user" (ngSubmit)="signup(user.value)">
+            <div class="row">
+              <div class="mb-3 col">
+                <label class="form-label mb-0 ms-2">First name</label>
+                <input type="text" class="form-control rounded-5" formControlName="firstName">
+                <div class="ms-4 text-danger" *ngIf="user.controls['firstName'].touched">
+                  <span *ngIf="user.controls['firstName'].hasError('required')">first name is required</span>
+                  <span *ngIf="user.controls['firstName'].hasError('minlength')">first name min length is 3</span>
+                  <span *ngIf="user.controls['firstName'].hasError('maxlength')">first name max length is 15</span>
+                </div>
+              </div>
+              <div class="mb-3 col">
+                <label class="form-label mb-0 ms-2">Last name</label>
+                <input type="text" class="form-control rounded-5" formControlName="lastName">
+                <div class="ms-4 text-danger" *ngIf="user.controls['lastName'].touched">
+                  <span *ngIf="user.controls['lastName'].hasError('required')">last name is required</span>
+                  <span *ngIf="user.controls['lastName'].hasError('minlength')">last name min length is 3</span>
+                  <span *ngIf="user.controls['lastName'].hasError('maxlength')">last name max length is 15</span>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label mb-0 ms-2">Email</label>
+              <input type="email" class="form-control rounded-5" formControlName="email">
+              <div class="ms-4 text-danger" *ngIf="user.controls['email'].touched">
+                <span *ngIf="user.controls['email'].hasError('required')">email is required</span>
+                <span *ngIf="user.controls['email'].hasError('email')">enter valid format example@example.com</span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label mb-0 ms-2">Password</label>
+              <input type="password" class="form-control rounded-5" formControlName="password">
+              <div class="ms-4 text-danger" *ngIf="user.controls['password'].touched">
+                <span *ngIf="user.controls['password'].hasError('required')">password is required</span>
+                <span *ngIf="user.controls['password'].hasError('pattern')">min length of password 8 exist uppercase
+                  letter, lowercase letter and number</span>
+              </div>
+            </div>
+            <div class="mb-3 w-75 m-auto">
+              <label class="form-label mb-0 ms-2">Age</label>
+              <input type="number" min="15" max="80" class="form-control rounded-5" formControlName="age">
+              <div class="ms-4 text-danger" *ngIf="user.controls['age'].touched">
+                <span *ngIf="user.controls['age'].hasError('required')">age is required</span>
+                <span *ngIf="user.controls['age'].hasError('minlength')">min age is 15</span>
+                <span *ngIf="user.controls['age'].hasError('maxlength')"> max age is 80</span>
+              </div>
+            </div>
+            <div class="w-75 m-auto">
+              <button type="submit" class="mt-4 mb-3 rounded-5 py-2 px-5" [disabled]="user.invalid">Sign up</button>
+              <span class="ms-2 fs-6">or</span>
+              <a routerLink="/login" class="ms-2 fs-5 text-decoration-none">log in</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

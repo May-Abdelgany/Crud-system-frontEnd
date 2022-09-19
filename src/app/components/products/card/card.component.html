@@ -1,0 +1,64 @@
+<div class="container px-5 py-3">
+  <div class="alert alert-success" *ngIf="message">
+    <h3 class="text-center">{{message}}</h3>
+  </div>
+  <div class="row pb-5 mb-4">
+    <div class="col-xl-3 col-lg-6 mb-5 mt-4" *ngFor="let item of allProducts">
+      <!-- Card-->
+      <div class="card rounded  border-0  text-center position-relative">
+        <div class="card-body p-4"><img [src]="item.image" alt="" class="img-fluid d-block mx-auto mb-3">
+          <h5>{{item.title}}</h5>
+          <p class="fs-4 fw-bold font-italic">{{item.price}}$</p>
+          <ul class="list-inline small">
+            <li class="list-inline-item m-0 "><i class="fa fa-star text-success"></i></li>
+            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+          </ul>
+        </div>
+        <div class="position-absolute layer  text-white d-flex align-items-center justify-content-center">
+          <div class="me-2">
+            <button class="btn mybutton py-2 rounded-5" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              (click)="getProduct(item.p_id)">show</button>
+          </div>
+          <div class="me-2" *ngIf="inMyProducts">
+            <button class="btn btn-danger rounded-5" (click)="deleteProduct(item.p_id)">Delete</button>
+          </div>
+          <div *ngIf="inMyProducts">
+            <button routerLink="/updateProduct/{{item.p_id}}" class="btn btn-warning rounded-5"
+              type="button">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal mt-3" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog " style="max-width: 70%;" role="document">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{product.title}}</h5>
+            <button type="button" class="btn-close mybutton" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <img [src]="product.image" alt="" class="d-block mx-auto mb-3 col-lg-3 h-75">
+                <div class="col-lg-9">
+                  <p class="fs-5 ms-3"><span class="fs-2 text-dark fw-bold">Description:</span>{{product.description}}
+                  </p>
+                  <p class="fs-2 ms-3"><span class="text-dark fw-bold">Price:</span>{{product.price}}$</p>
+                  <p class="fs-5 ms-3"><span class="text-dark fs-2 fw-bold">Created by:</span>{{product.firstName}}
+                    {{product.lastName}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn mybutton mx-auto" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

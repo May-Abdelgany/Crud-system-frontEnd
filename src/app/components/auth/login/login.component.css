@@ -1,0 +1,36 @@
+.main {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.04)), url('../../../../assets/images/bg-registration-form-2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.child {
+  background-image: url('../../../../assets/images/registration-form-2.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  border-color: var(--maincolor);
+}
+
+button {
+  background-color: var(--maincolor);
+  color: white;
+  border: unset;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: var(--hover);
+}
+
+@media screen and (max-width: 991px) {
+  .child {
+    background-image: unset;
+  }
+
+}

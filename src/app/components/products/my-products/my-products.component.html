@@ -1,0 +1,6 @@
+<app-searchbar></app-searchbar>
+<h2 class="text-center  mt-5">My product in store</h2>
+<div class="alert alert-danger w-75 mt-5 m-auto" *ngIf="message">
+  <p class="text-center">{{message}}</p>
+</div>
+<app-card [allProducts]="myProducts" [inMyProducts]="true"></app-card>

@@ -1,0 +1,53 @@
+<div class="mt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-lg-2">
+        <div class="bg-white rounded-4 p-5 ">
+          <form [formGroup]="product">
+            <div class="mb-3">
+              <label class="form-label  ms-2 mb-0">Title</label>
+              <input type="text" class="form-control rounded-5" formControlName="title">
+              <div class="mt-1 ms-2 text-danger" *ngIf="product.controls['title'].touched">
+                <p *ngIf="product.controls['title'].hasError('required')">title is required</p>
+                <p *ngIf="product.controls['title'].hasError('maxlength')">maxlength of title is 30</p>
+                <p *ngIf="product.controls['title'].hasError('minlength')">minlength of title is 5</p>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label ms-2 mb-0">Price</label>
+              <input type="number" class="form-control rounded-5" formControlName="Price">
+              <div class="mt-1 ms-2 text-danger" *ngIf="product.controls['Price'].touched">
+                <p *ngIf="product.controls['Price'].hasError('required')">Price is required</p>
+
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label  ms-2 mb-0">Description</label>
+              <textarea class="form-control rounded-5" rows="5" formControlName="description"></textarea>
+              <div class="mt-1 ms-2 text-danger" *ngIf="product.controls['description'].touched">
+                <p *ngIf="product.controls['description'].hasError('required')">description is required</p>
+                <p *ngIf="product.controls['description'].hasError('maxlength')">maxlength of description is 300</p>
+                <p *ngIf="product.controls['description'].hasError('minlength')">minlength of description is 5</p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label  ms-2 mb-0">Image Path</label>
+              <textarea class="form-control rounded-5" rows="5" formControlName="image"></textarea>
+              <div class="mt-1 ms-2 text-danger" *ngIf="product.controls['description'].touched">
+                <p *ngIf="product.controls['image'].hasError('required')">image is required</p>
+                <p *ngIf="product.controls['image'].hasError('maxlength')">maxlength of image is 500</p>
+                <p *ngIf="product.controls['image'].hasError('minlength')">minlength of image is 5</p>
+              </div>
+            </div>
+            <button *ngIf="displayButton" type="submit" class="btn rounded-5 d-block mt-5 m-auto"
+              [disabled]="product.invalid" (click)="add(product.value)">Add
+              Product</button>
+            <button *ngIf="!displayButton" type="submit" class="btn rounded-5 d-block mt-5 m-auto"
+              [disabled]="product.invalid" (click)="update(product.value)">Update
+              Product</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
